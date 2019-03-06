@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1= title
+    form(method='POST')
+        div
+            p Username:
+            input(type='text' name='username')
+        div
+            p Password:
+            input(type='password' name='password')
+        div
+            br
+            button(type='submit') Submit
+        div
+            p= error

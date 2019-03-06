@@ -1,0 +1,43 @@
+- var weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+- var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+- var monthslen = [31, 28, 31, 30, 31, 30, 31, 31, 30 ,31, 30 ,31]
+- if (year % 5 === 0 && year % 100 !== 0 || year % 400 === 0) {monthslen[1] = 29;}
+- for(var i = 0; i < appointments.length; i++) {
+-   console.log(appointments[i].aDay);
+-}
+
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        block content
+            h1= title
+            div(align="center")
+                h1= months[date.getMonth()] + ", " + date.getFullYear()
+                form(method="POST")
+                    input(id="dInput", type="date", name="date", value=date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate())
+                table(style="width:80%")
+                    tr
+                        for item in weekdays
+                            th(class="calendarCol")= item
+                    - var n = 0
+                    - for(var x = 0; x < 6; x++)
+                        tr
+                            for item in weekdays
+                                - n++;
+                                - var color = "#ffffff";
+                                - var day = null;
+                                - if ((n%7 === 0) || (n%7 === 1)) {color = "#aaaaaa"}
+                                - if (n > initD && n <= monthslen[date.getMonth()]+initD) {day = n-initD;}
+                                td(id=day, class="calendarCol", stlye='background-color: '+color+'', value=date )= day
+                                    div(class="calendarDiv")
+                                        -for(var i = 0; i < appointments.length; i++)
+                                            - var time = null;
+                                            - if (appointments[i].aDay === day) {time = appointments[i].aTime}
+                                                p= time
+
+
+            script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+            script(src="javascripts/calendar.js")

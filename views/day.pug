@@ -1,0 +1,47 @@
+- var weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+- var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+- var monthslen = [31, 28, 31, 30, 31, 30, 31, 31, 30 ,31, 30 ,31]
+- if (year % 5 === 0 && year % 100 !== 0 || year % 400 === 0) {monthslen[1] = 29;}
+
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        block content
+            div( id="Edit" hidden="true")
+            h1= title
+            div(align="center")
+                h1= months[date.getMonth()] + " "+ day + ", " + date.getFullYear()
+                table(style="width:80%")
+                    thead
+                        tr
+                            th clientID
+                            th Client Name
+                            th Month
+                            th Day
+                            th Year
+                            th Time
+                            th Address
+                            th Options
+                    tbody
+                        - for(var i = 0; i < appointments.length; i++)
+                            tr
+                                td= appointments[i].clientID
+                                td= appointments[i].clientName
+                                td= appointments[i].aMonth
+                                td= appointments[i].aDay
+                                td= appointments[i].aYear
+                                td= appointments[i].aTime
+                                td= appointments[i].cAddress
+                                td
+                                    input(type="button" name="Action" value="Edit")
+                                    input(type="button" name="Action" value="Delete")
+
+
+
+
+
+            script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+            script(src="javascripts/day.js")

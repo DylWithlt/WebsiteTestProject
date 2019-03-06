@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  if !user
+    p Welcome to #{title}
+  if user
+    p Welcome to #{title}, #{user}.
+  if !user
+    a(class='button' href= '/login') Login
+  if user
+    a(class='button' href='/logout') Logout
+  br
+  if user
+    a(class='button' href= '/calendar') Calendar
